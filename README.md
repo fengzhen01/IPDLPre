@@ -1,7 +1,5 @@
 IPDLPre: Protein-DNA binding site prediction
 
-CLAPE-SMB is a member of CLAPE framework.
-
 CLAPE-SMB is primarily dependent on a large-scale pre-trained protein language model ESM-2 implemented using HuggingFace's Transformers and PyTorch. Please install the dependencies in advance.
 
 Files and folders description
