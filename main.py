@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-# from sklearn.metrics import roc_auc_score, matthews_corrcoef
 from sklearn.metrics import roc_auc_score, matthews_corrcoef, accuracy_score, recall_score, precision_score, f1_score
 import count
 from data import ProteinLigandData
