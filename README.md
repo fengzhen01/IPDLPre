@@ -19,8 +19,7 @@ matplotlib 3.9.4
 pytorch-lightning 1.9.5  
 
 # 2. Feature Generation  
-## step1：
-Please download the required pretrained protein language models and place them in the specified directories as follows:  
+**step1** ：Please download the required pretrained protein language models and place them in the specified directories as follows:  
 **ESM-2**  
 Download from: https://huggingface.co/facebook/esm2_t33_650M_UR50D  
 Target path: `./process_feature/esm2_t33_650M_UR50D`
