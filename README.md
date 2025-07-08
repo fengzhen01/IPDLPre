@@ -19,7 +19,6 @@ matplotlib 3.9.4
 pytorch-lightning 1.9.5  
 
 # 2. Feature Generation  
-
 ## step1 ：Download pretrained protein language model  
 Please download the required pretrained protein language models and place them in the specified directories as follows:  
 **ESM-2**  
@@ -58,7 +57,15 @@ Please ensure that the downloaded files are placed in the correct subdirectories
 ./Dataset/RNA/ for RNA-related features  
 ./Dataset/DRNA/ for DRNA-related features  
 
-## step3 ：Generate Protein Language Model Embeddings  
+## step3 ：Concatenate Multi-Model Embeddings  
+Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been generated (see step2), you can use the following script to concatenate them into a unified embedding representation.  
+This process merges the features along the last dimension, provided that all three models return embeddings of the same sequence length.  
+```bash
+python merge_embeddings.py
+```
+The resulting .pkl files will be saved under the same ./Dataset/ directory, e.g.:
+./Dataset/DNA/three_data_Train.pkl
+These concatenated features are used as input for the downstream predictive model.
 
 # 3. How to use
 
