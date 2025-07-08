@@ -31,13 +31,13 @@ def merge_features(esm_data_path, protbert_data_path, protT5_data_path, output_p
         pickle.dump(combined_data, f)
 
 # Path configuration
-esm_data_root_Val = '../IPDLPre/Dataset/DNA/esm_RNA-495_Train.pkl'
-protbert_data_root_Val = '../IPDLPre/Dataset/DNA/protbert_RNA-495_Train.pkl'
-protT5_data_root_Val = '../IPDLPre/Dataset/DNA/protT5_RNA-495_Train.pkl'
+esm_data_root_Val = '../IPDLPre/Dataset/DNA/esm_DNA-573_Train.pkl'
+protbert_data_root_Val = '../IPDLPre/Dataset/DNA/protbert_DNA-573_Train.pkl'
+protT5_data_root_Val = '../IPDLPre/Dataset/DNA/protT5_DNA-573_Train.pkl'
 
 
-three_data_root_Val = '../IPDLPre/Dataset/concat/DNA/three_data_Train.pkl'
-# two_data_root_Val = '../IPDLPre/Dataset/RNA3/two_data_Val.pkl'
+three_data_root_Val = '../IPDLPre/Dataset/DNA/three_data_Train.pkl'
+# two_data_root_Val = '../IPDLPre/Dataset/DNA/two_data_Val.pkl'
 
 merge_features(esm_data_root_Val, protbert_data_root_Val, protT5_data_root_Val, three_data_root_Val)
 
