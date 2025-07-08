@@ -4,8 +4,10 @@ import pickle
 import torch
 from tqdm import tqdm
 
-tokenizer = T5Tokenizer.from_pretrained("Rostlab/prot_t5_xl_uniref50", do_lower_case=False)
-pretrain_model = T5EncoderModel.from_pretrained("Rostlab/prot_t5_xl_uniref50")
+model_path = '../process_feature/prot_t5_xl_uniref50/'
+
+tokenizer = T5Tokenizer.from_pretrained(model_path, do_lower_case=False)
+pretrain_model = T5EncoderModel.from_pretrained(model_path)
 
 
 def get_protein_features(seq):
