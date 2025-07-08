@@ -19,7 +19,7 @@ matplotlib 3.9.4
 pytorch-lightning 1.9.5  
 
 # 2.Feature Generation  
-### step1 ：Generate Protein Language Model Embeddings  
+## step1 ：Generate Protein Language Model Embeddings  
 Please download the required pretrained protein language models and place them in the specified directories as follows:  
 
 **ESM-2**  
@@ -36,8 +36,7 @@ Target path: `./process_feature/prot_bert`
 
 You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
-
-step2：  
+## step2 ：Generate Protein Language Model Embeddings  
 
 # 3. How to use
 
