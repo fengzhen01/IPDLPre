@@ -9,9 +9,10 @@ Name = 'DNA-573_Train'
 # Name = 'RNA-495_Train'
 # Name = 'DRNA-1068_Train'
 
-# esm-v2
-model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
-
+# local ESM2
+model_path = './process_feature/esm2_t33_650M_UR50D/esm2_t33_650M_UR50D.pt'
+model, alphabet = esm.pretrained.load_model_and_alphabet_local(model_path)
+model.eval()
 batch_converter = alphabet.get_batch_converter()
 
 # data training data
