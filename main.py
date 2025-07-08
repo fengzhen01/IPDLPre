@@ -71,13 +71,7 @@ class TripletClassificationModel(pl.LightningModule):
 
         model_opt.step()
         if self.clw != 0:
-            # self.clip_gradients(loss_opt, gradient_clip_val=0.5)
             loss_opt.step()
-        # model_scheduler.step()
-        # loss_scheduler.step()
-
-        # self.log('model lr', model_scheduler.get_lr()[0])
-        # self.log('loss lr', loss_scheduler.get_lr()[0])
 
         return {'embedding': embedding.reshape(embedding.size(0) * embedding.size(1), -1),
                 'label': label.reshape(label.size(0) * label.size(1)), 'score': score, 'loss': loss}
@@ -110,11 +104,9 @@ class TripletClassificationModel(pl.LightningModule):
         self.val_label = label_list
         self.val_score = score_list
 
-        # metrics
         score = np.concatenate(score_list)
         label = np.concatenate(label_list)
 
-        # calculate metrics
         auc = roc_auc_score(label, score[:, 1])
         mcc = matthews_corrcoef(label, score.argmax(1))
         acc = accuracy_score(label, score.argmax(1))
@@ -123,7 +115,6 @@ class TripletClassificationModel(pl.LightningModule):
         pre = precision_score(label, score.argmax(1))
         f1 = f1_score(label, score.argmax(1))
 
-        # log the metrics
         self.log("AUC", auc)
         self.log("MCC", mcc)
         self.log("ACC", acc)
@@ -132,11 +123,9 @@ class TripletClassificationModel(pl.LightningModule):
         self.log("PRE", pre)
         self.log("F1", f1)
 
-        # print the metrics after each validation epoch
         print(
             f"Validation Metrics - AUC: {auc:.4f}, MCC: {mcc:.4f}, ACC: {acc:.4f}, SEN: {sen:.4f}, SPE: {spe:.4f}, PRE: {pre:.4f}, F1: {f1:.4f}")
 
-        # Save current epoch metrics to history
         self.validation_metrics_history.append({
             'auc': auc, 'mcc': mcc, 'acc': acc, 'sen': sen,
             'spe': spe, 'pre': pre, 'f1': f1
