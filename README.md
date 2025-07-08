@@ -39,8 +39,7 @@ After downloading the pretrained models in **step1**, you can use the following 
 `pre_protbert.py` → generates embeddings using ProtBert
 Each script processes protein sequences and saves the corresponding embeddings into the `./Dataset/` directory under subfolders such as `./Dataset/DNA/` or `./Dataset/RNA/`.
 
-```markdown
-Example usage:
+**Example usage:**
 
 ```bash
 python pre_esm2.py
@@ -52,13 +51,13 @@ python pre_protbert.py
 
 # 3. How to use
 
-## 3.2 Train and test
+## 3.1 Train and test
 
-### 3.2.1 Extract features
+### 3.1.1 Extract features
 
-### 3.2.2 Train and test
+### 3.1.2 Train and test
 
-## 3.3 Only For nucleotide binding residues prediction purpose
+## 3.2 Only For nucleotide binding residues prediction purpose
 
 ### Generate Features
 
