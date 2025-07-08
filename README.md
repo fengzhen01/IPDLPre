@@ -2,9 +2,6 @@
 This repository provides the implementation of the IPDLPre framework for predicting protein–DNA binding sites, with additional support for protein–RNA binding site prediction.  
 IPDLPre is built upon three large-scale, pre-trained protein language models: ESM-2, ProtT5, and ProtBert. These models are integrated using Hugging Face's Transformers and PyTorch.  
 Please ensure that all required dependencies are installed before running the code.   
-ESM-2: https://huggingface.co/facebook/esm2_t12_650M_UR50D  
-ProtT5: https://huggingface.co/Rostlab/prot_t5_xl_uniref50  
-ProtBert: https://huggingface.co/Rostlab/prot_bert  
 
 # 1. System Requirements  
 The source code developed in Python 3.9 using PyTorch 2.5.1. The required python dependencies are given below.  
@@ -22,7 +19,7 @@ matplotlib 3.9.4
 pytorch-lightning 1.9.5  
 
 # 2. Feature Generation  
-step1： Please download the required pretrained protein language models and place them in the specified directories as follows:
+step1： Please download the required pretrained protein language models and place them in the specified directories as follows:  
 **ESM-2**  
 Download from: https://huggingface.co/facebook/esm2_t33_650M_UR50D  
 Target path: `./process_feature/pretrained_model/facebook/esm2_t12_650M_UR50D`
