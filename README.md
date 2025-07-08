@@ -34,11 +34,9 @@ You can either use the Hugging Face `transformers` library to automatically down
 
 ## step2 ：Generate Protein Language Model Embeddings  
 After downloading the pretrained models in **step1**, you can use the following Python scripts to generate embeddings for protein sequences:
-
-- `pre_esm2.py`  → generates embeddings using ESM-2  
-- `pre_protT5.py` → generates embeddings using ProtT5  
-- `pre_protbert.py` → generates embeddings using ProtBert
-
+`pre_esm2.py`  → generates embeddings using ESM-2  
+`pre_protT5.py` → generates embeddings using ProtT5  
+`pre_protbert.py` → generates embeddings using ProtBert
 Each script processes protein sequences and saves the corresponding embeddings into the `./Dataset/` directory under subfolders such as `./Dataset/DNA/` or `./Dataset/RNA/`.
 
 Example usage:
