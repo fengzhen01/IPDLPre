@@ -25,9 +25,10 @@ def data_pkl_generator(root, saver):
            data_dict[data[i].strip()[1:]] = (get_protein_features(seq), label)
    pickle.dump(data_dict, open(saver, 'wb'))
 
-
-Name = 'DRNA-1068_Train'
-file_path = "../IPDLPre/Raw_data/DNA/" + Name + ".txt"
-saver_path = "../IPDLPre/Dataset/DRNA-1068/protbert_" + Name + ".pkl"
+Name = 'DNA-573_Train'
+# Name = 'RNA-495_Train'
+# Name = 'DRNA-1068_Train'
+file_path = "../IPDLPre/Raw_data/" + Name + ".txt"
+saver_path = "../IPDLPre/Dataset/DNA/protbert_" + Name + ".pkl"
 
 data_pkl_generator(file_path, saver_path)
