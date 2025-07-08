@@ -13,7 +13,7 @@ def merge_features(esm_data_path, protbert_data_path, protT5_data_path, output_p
     combined_data = {}
 
     for key in esm_data.keys():
-        # 取出各个模型的特征
+        #Extract the features of each model
         esm_feature = esm_data[key][0]
         protbert_feature = protbert_data[key][0]
         protT5_feature = protT5_data[key][0]
@@ -30,13 +30,13 @@ def merge_features(esm_data_path, protbert_data_path, protT5_data_path, output_p
     with open(output_path, 'wb') as f:
         pickle.dump(combined_data, f)
 
-# 路径配置
-esm_data_root_Val = '../IPDLPre/Dataset/RNA/esm_RNA-495_Train.pkl'
-protbert_data_root_Val = '../IPDLPre/Dataset/RNA/protbert_RNA-495_Train.pkl'
-protT5_data_root_Val = '../IPDLPre/Dataset/RNA/protT5_RNA-495_Train.pkl'
+# Path configuration
+esm_data_root_Val = '../IPDLPre/Dataset/DNA/esm_RNA-495_Train.pkl'
+protbert_data_root_Val = '../IPDLPre/Dataset/DNA/protbert_RNA-495_Train.pkl'
+protT5_data_root_Val = '../IPDLPre/Dataset/DNA/protT5_RNA-495_Train.pkl'
 
 
-three_data_root_Val = '../IPDLPre/Dataset/concat/DRNA/three_data_Train.pkl'
+three_data_root_Val = '../IPDLPre/Dataset/concat/DNA/three_data_Train.pkl'
 # two_data_root_Val = '../IPDLPre/Dataset/RNA3/two_data_Val.pkl'
 
 merge_features(esm_data_root_Val, protbert_data_root_Val, protT5_data_root_Val, three_data_root_Val)
