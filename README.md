@@ -69,19 +69,14 @@ These files serve as the final input to the downstream predictive model.
 📦 Google Drive – Merged Features (three_data_*.pkl)  
 Be sure to place them in the correct location, e.g., ./Dataset/DNA/three_data_Train.pkl.  
 
-# 3. How to use
+# 3. Run IPDLPre for prediction
+To run prediction using the IPDLPre framework on datasets located in the ./Dataset directory, execute the following command:
+```bash
+python main.py
+```
+Before running the script, please ensure that:  
+All dependencies are properly installed (see Requirements).  
+The .pkl feature files (generated or downloaded) are placed in the correct subdirectories under ./Dataset/, such as ./Dataset/DNA/, ./Dataset/RNA/, or ./Dataset/DRNA/.  
+Configuration settings (e.g., dataset name, paths, model parameters) in the code are correctly set according to your usage.  
 
-## 3.1 Train and test
 
-### 3.1.1 Extract features
-
-### 3.1.2 Train and test
-
-## 3.2 Only For nucleotide binding residues prediction purpose
-
-### Generate Features
-
-After completing the steps above, run the following command to generate features and save them in the ./feature directory:
-
-python ./process_feature/process_feature.py
-Alternatively, you can download the features directly from our cloud drive: Google Drive Link.
