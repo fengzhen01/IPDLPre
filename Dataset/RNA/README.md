@@ -2,8 +2,6 @@
 This directory is intended to store the extracted protein language model (PLM) embeddings for RNA-related samples.  
 These embeddings are **not included in the repository** due to their large file size.
 
----
-
 ## 🔧 How to Generate the Embeddings
 
 You can generate the required PLM embeddings by running the following Python scripts:
