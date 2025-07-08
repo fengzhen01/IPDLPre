@@ -3,7 +3,7 @@ import torch.nn as nn
 from sklearn.metrics import roc_auc_score, matthews_corrcoef, accuracy_score, recall_score, precision_score, f1_score
 import count
 from data import ProteinLigandData
-from model_3328 import CNN_TransformerModel
+from model import CNN_TransformerModel
 from losses import TripletCenterLoss, FocalLoss, CrossEntropy
 import numpy as np
 import pytorch_lightning as pl
@@ -12,7 +12,6 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import loggers as pl_loggers
 
 pl.seed_everything(42)
-
 
 class TripletClassificationModel(pl.LightningModule):
     def __init__(self,
