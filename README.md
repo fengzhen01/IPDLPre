@@ -21,19 +21,15 @@ pytorch-lightning 1.9.5
 # 2.Feature Generation  
 ## step1 ：Generate Protein Language Model Embeddings  
 Please download the required pretrained protein language models and place them in the specified directories as follows:  
-
 **ESM-2**  
 Download from: [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)  
 Target path: `./process_feature/esm2_t33_650M_UR50D`
-
 **ProtT5**  
 Download from: [Rostlab/prot_t5_xl_uniref50](https://huggingface.co/Rostlab/prot_t5_xl_uniref50)  
 Target path: `./process_feature/prot_t5_xl_uniref50`
-
 **ProtBert**  
 Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)  
 Target path: `./process_feature/prot_bert`
-
 You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
 ## step2 ：Generate Protein Language Model Embeddings  
