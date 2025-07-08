@@ -50,22 +50,24 @@ python pre_esm2.py
 python pre_protT5.py
 python pre_protbert.py
 ```
-Alternatively, if you are unable to generate the embeddings locally due to hardware or time constraints, you can directly download the pre-extracted feature files (.pkl) from our cloud storage:  
-Download from Google Drive  
-Please ensure that the downloaded files are placed in the correct subdirectories:  
-./Dataset/DNA/ for DNA-related features  
-./Dataset/RNA/ for RNA-related features  
-./Dataset/DRNA/ for DRNA-related features  
+⚠️ If you are unable to generate these embeddings locally due to hardware or runtime limitations, pre-extracted .pkl files can be downloaded from our cloud drive:  
+📦 Google Drive – Single Model Embeddings  
+(Includes ProtT5, ProtBert, and ESM-2 features for DNA/RNA/DRNA)  
+Please place the downloaded files into the appropriate subfolders under ./Dataset/.  
 
 ## step3 ：Concatenate Multi-Model Embeddings  
-Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been generated (see step2), you can use the following script to concatenate them into a unified embedding representation.  
-This process merges the features along the last dimension, provided that all three models return embeddings of the same sequence length.  
+Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been generated (see step2), you can run the script below to concatenate them into a unified embedding representation for each protein sequence:  
 ```bash
 python merge_embeddings.py
 ```
-The resulting .pkl files will be saved under the same ./Dataset/ directory, e.g.:
-./Dataset/DNA/three_data_Train.pkl
-These concatenated features are used as input for the downstream predictive model.
+The script will output concatenated .pkl files such as:  
+./Dataset/DNA/three_data_Train.pkl  
+./Dataset/RNA/three_data_Train.pkl  
+./Dataset/DRNA/three_data_Train.pkl  
+These files serve as the final input to the downstream predictive model.  
+🔄 Alternatively, if you wish to skip local generation, you can download the concatenated feature files directly:  
+📦 Google Drive – Merged Features (three_data_*.pkl)  
+Be sure to place them in the correct location, e.g., ./Dataset/DNA/three_data_Train.pkl.  
 
 # 3. How to use
 
