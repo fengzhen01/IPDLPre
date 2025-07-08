@@ -5,19 +5,6 @@ class CNN_TransformerModel(nn.Module):
     def __init__(self):
         super(CNN_TransformerModel, self).__init__()
 
-        # # CNN module
-        # self.conv_layers = nn.Sequential(
-        #     nn.Conv1d(in_channels=3328, out_channels=512, kernel_size=3, padding=1),
-        #     nn.BatchNorm1d(512),
-        #     nn.ReLU(),
-        #     nn.Conv1d(in_channels=512, out_channels=256, kernel_size=3, padding=1),
-        #     nn.BatchNorm1d(256),
-        #     nn.ReLU(),
-        #     nn.Conv1d(in_channels=256, out_channels=1024, kernel_size=3, padding=1),
-        #     nn.BatchNorm1d(1024),
-        #     nn.ReLU()
-        # )
-
         # CNN module
         self.conv_layers = nn.Sequential(
             nn.Conv1d(in_channels=3328, out_channels=2048, kernel_size=3, padding=1),
@@ -61,15 +48,12 @@ class CNN_TransformerModel(nn.Module):
     def forward(self, x):
         x = x.transpose(1, 2)     # Convert input dimensions to [batch, channels, sequence_length]
         x = self.conv_layers(x)
-        c1 = x
         x = x.transpose(1, 2)     # turn back [batch, sequence_length, channels]
 
         x, attention = self.attention(x, x, x)
-        # a1 = x
         x = self.dropout(self.norm(x + x))
-        a1 = x
         inter = x
 
         x = self.dropout(self.norm(self.ffn(x) + x))
-        return c1, a1, self.class_head(x), inter
+        return self.class_head(x), inter
 
