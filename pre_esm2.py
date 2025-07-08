@@ -6,6 +6,8 @@ import esm
 from tqdm import tqdm
 
 Name = 'DNA-573_Train'
+# Name = 'RNA-495_Train'
+# Name = 'DRNA-1068_Train'
 
 # esm-v2
 model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
@@ -25,4 +27,6 @@ for i in tqdm(range(len(data))):
         token_representations = results["representations"][33]
         data_dict[pid] = (token_representations.squeeze(0)[1:-1, :], data[i+2].strip())
 
-pickle.dump(data_dict, open("../IPDLPre/Dataset/protein/esm_" + Name + ".pkl", 'wb'))
+pickle.dump(data_dict, open("../IPDLPre/Dataset/DNA/esm_" + Name + ".pkl", 'wb'))
+# pickle.dump(data_dict, open("../IPDLPre/Dataset/RNA/esm_" + Name + ".pkl", 'wb'))
+# pickle.dump(data_dict, open("../IPDLPre/Dataset/DRNA/esm_" + Name + ".pkl", 'wb'))
