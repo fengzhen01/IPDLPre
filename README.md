@@ -22,15 +22,15 @@ pytorch-lightning 1.9.5
 step1： Please download the required pretrained protein language models and place them in the specified directories as follows:  
 **ESM-2**  
 Download from: https://huggingface.co/facebook/esm2_t33_650M_UR50D  
-Target path: `./process_feature/pretrained_model/facebook/esm2_t12_650M_UR50D`
+Target path: `./process_feature/esm2_t33_650M_UR50D`
 
 **ProtT5**  
 Download from: https://huggingface.co/Rostlab/prot_t5_xl_uniref50    
-Target path: `./process_feature/pretrained_model/Rostlab/prot_t5_xl_uniref50`
+Target path: `./process_feature/prot_t5_xl_uniref50`
 
 **ProtBert**  
 Download from: https://huggingface.co/Rostlab/prot_bert    
-Target path: `./process_feature/pretrained_model/Rostlab/prot_bert`
+Target path: `./process_feature/prot_bert`
 
 You may use the Hugging Face `transformers` library to load and cache these models automatically, or download them manually and place them as shown above.
 
