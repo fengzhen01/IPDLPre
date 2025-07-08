@@ -3,7 +3,7 @@ This repository provides the implementation of the IPDLPre framework for predict
 IPDLPre is built upon three large-scale, pre-trained protein language models: ESM-2, ProtT5, and ProtBert. These models are integrated using Hugging Face's Transformers and PyTorch.  
 Please ensure that all required dependencies are installed before running the code.   
 
-# System Requirements  
+# 1.System Requirements  
 The source code developed in Python 3.9 using PyTorch 2.5.1. The required python dependencies are given below.  
 Python 3.9+  
 PyTorch 2.5.1  
@@ -18,21 +18,23 @@ pandas 2.2.3
 matplotlib 3.9.4  
 pytorch-lightning 1.9.5  
 
-# Feature Generation  
-**1** ：Please download the required pretrained protein language models and place them in the specified directories as follows:  
+# 2.Feature Generation  
+### step1 ：Generate Protein Language Model Embeddings  
+Please download the required pretrained protein language models and place them in the specified directories as follows:  
+
 **ESM-2**  
-Download from: https://huggingface.co/facebook/esm2_t33_650M_UR50D  
+Download from: [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)  
 Target path: `./process_feature/esm2_t33_650M_UR50D`
 
 **ProtT5**  
-Download from: https://huggingface.co/Rostlab/prot_t5_xl_uniref50    
+Download from: [Rostlab/prot_t5_xl_uniref50](https://huggingface.co/Rostlab/prot_t5_xl_uniref50)  
 Target path: `./process_feature/prot_t5_xl_uniref50`
 
 **ProtBert**  
-Download from: https://huggingface.co/Rostlab/prot_bert    
+Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)  
 Target path: `./process_feature/prot_bert`
 
-You may use the Hugging Face `transformers` library to load and cache these models automatically, or download them manually and place them as shown above.
+You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
 
 step2：  
