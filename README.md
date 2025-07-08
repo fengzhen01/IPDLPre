@@ -29,7 +29,7 @@ Download from: [Rostlab/prot_t5_xl_uniref50](https://huggingface.co/Rostlab/prot
 Target path: `./process_feature/prot_t5_xl_uniref50`
 **ProtBert**  
 Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)  
-Target path: `./process_feature/prot_bert`
+Target path: `./process_feature/prot_bert`  
 You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
 ## step2 ：Generate Protein Language Model Embeddings  
