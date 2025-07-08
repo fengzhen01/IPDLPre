@@ -18,27 +18,35 @@ pandas 2.2.3
 matplotlib 3.9.4  
 pytorch-lightning 1.9.5  
 
-# 2.Feature Generation  
+# 2. Feature Generation  
+
 ## step1 ：Download pretrained protein language model  
 Please download the required pretrained protein language models and place them in the specified directories as follows:  
+
 **ESM-2**  
 Download from: [facebook/esm2_t33_650M_UR50D](https://huggingface.co/facebook/esm2_t33_650M_UR50D)  
 Target path: `./process_feature/esm2_t33_650M_UR50D`  
+
 **ProtT5**  
-Download from: [Rostlab/prot_t5_xl_uniref50](https://huggingface.co/Rostlab/prot_t5_xl_uniref50)   
+Download from: [Rostlab/prot_t5_xl_uniref50](https://huggingface.co/Rostlab/prot_t5_xl_uniref50)  
 Target path: `./process_feature/prot_t5_xl_uniref50`  
+
 **ProtBert**  
-Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)   
+Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)  
 Target path: `./process_feature/prot_bert`  
+
 You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
 ---
 
 ## step2 ：Generate Protein Language Model Embeddings  
+
 After downloading the pretrained models in **step1**, you can use the following Python scripts to generate embeddings for protein sequences:
-`pre_esm2.py`  → generates embeddings using ESM-2  
-`pre_protT5.py` → generates embeddings using ProtT5  
-`pre_protbert.py` → generates embeddings using ProtBert
+
+- `pre_esm2.py`  → generates embeddings using ESM-2  
+- `pre_protT5.py` → generates embeddings using ProtT5  
+- `pre_protbert.py` → generates embeddings using ProtBert  
+
 Each script processes protein sequences and saves the corresponding embeddings into the `./Dataset/` directory under subfolders such as `./Dataset/DNA/` or `./Dataset/RNA/`.
 
 **Example usage:**
@@ -47,6 +55,7 @@ Each script processes protein sequences and saves the corresponding embeddings i
 python pre_esm2.py
 python pre_protT5.py
 python pre_protbert.py
+
 
 ## step3 ：Generate Protein Language Model Embeddings  
 
