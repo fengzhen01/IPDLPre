@@ -4,9 +4,11 @@ import pickle
 import torch
 from tqdm import tqdm
 
-# ProtBert
-tokenizer = BertTokenizer.from_pretrained("Rostlab/prot_bert", do_lower_case=False, cache_dir='./cache_model/')
-pretrain_model = BertModel.from_pretrained("Rostlab/prot_bert", cache_dir='./cache_model/')
+# ProtBert local path
+model_path = './process_feature/prot_bert/'  # Local model path
+
+tokenizer = BertTokenizer.from_pretrained(model_path, do_lower_case=False)
+pretrain_model = BertModel.from_pretrained(model_path)
 
 def get_protein_features(seq):
    sequence_Example = ' '.join(seq)
