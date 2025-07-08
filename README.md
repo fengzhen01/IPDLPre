@@ -40,12 +40,14 @@ After downloading the pretrained models in **step1**, you can use the following 
 Each script processes protein sequences and saves the corresponding embeddings into the `./Dataset/` directory under subfolders such as `./Dataset/DNA/` or `./Dataset/RNA/`.
 
 Example usage:
+
 ```bash
 python pre_esm2.py
 python pre_protT5.py
 python pre_protbert.py
 
 
+## step3 ：Generate Protein Language Model Embeddings  
 
 
 # 3. How to use
