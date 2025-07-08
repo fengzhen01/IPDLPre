@@ -51,6 +51,12 @@ python pre_esm2.py
 python pre_protT5.py
 python pre_protbert.py
 ```
+Alternatively, if you are unable to generate the embeddings locally due to hardware or time constraints, you can directly download the pre-extracted feature files (.pkl) from our cloud storage:  
+Download from Google Drive  
+Please ensure that the downloaded files are placed in the correct subdirectories:  
+./Dataset/DNA/ for DNA-related features  
+./Dataset/RNA/ for RNA-related features  
+./Dataset/DRNA/ for DRNA-related features  
 
 ## step3 ：Generate Protein Language Model Embeddings  
 
