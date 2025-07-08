@@ -32,6 +32,8 @@ Download from: [Rostlab/prot_bert](https://huggingface.co/Rostlab/prot_bert)
 Target path: `./process_feature/prot_bert`  
 You can either use the Hugging Face `transformers` library to automatically download and cache these models at runtime, or download them manually and place them in the corresponding directories as shown above.
 
+---
+
 ## step2 ：Generate Protein Language Model Embeddings  
 After downloading the pretrained models in **step1**, you can use the following Python scripts to generate embeddings for protein sequences:
 `pre_esm2.py`  → generates embeddings using ESM-2  
