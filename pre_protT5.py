@@ -27,9 +27,10 @@ def data_pkl_generator(root, saver):
    pickle.dump(data_dict, open(saver, 'wb'))
 
 
-# Name = 'DNA-129_Test'
-Name = 'DNA-129_Test'
-file_path = "../IPDLPre/Raw_data/DNA/" + Name + ".txt"
-saver_path = "../IPDLPre/Dataset/DRNA-1068/protT5_" + Name + ".pkl"
+Name = 'DNA-573_Train'
+# Name = 'RNA-495_Train'
+# Name = 'DRNA-1068_Train'
+file_path = "../IPDLPre/Raw_data/" + Name + ".txt"
+saver_path = "../IPDLPre/Dataset/DNA/protT5_" + Name + ".pkl"
 
 data_pkl_generator(file_path, saver_path)
