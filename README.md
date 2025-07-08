@@ -3,7 +3,7 @@ This repository provides the implementation of the IPDLPre framework for predict
 IPDLPre is built upon three large-scale, pre-trained protein language models: ESM-2, ProtT5, and ProtBert. These models are integrated using Hugging Face's Transformers and PyTorch.  
 Please ensure that all required dependencies are installed before running the code.   
 
-# 1. System Requirements  
+# System Requirements  
 The source code developed in Python 3.9 using PyTorch 2.5.1. The required python dependencies are given below.  
 Python 3.9+  
 PyTorch 2.5.1  
@@ -18,8 +18,8 @@ pandas 2.2.3
 matplotlib 3.9.4  
 pytorch-lightning 1.9.5  
 
-# 2. Feature Generation  
-**step1** ：Please download the required pretrained protein language models and place them in the specified directories as follows:  
+# Feature Generation  
+**1** ：Please download the required pretrained protein language models and place them in the specified directories as follows:  
 **ESM-2**  
 Download from: https://huggingface.co/facebook/esm2_t33_650M_UR50D  
 Target path: `./process_feature/esm2_t33_650M_UR50D`
