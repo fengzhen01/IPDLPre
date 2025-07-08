@@ -4,7 +4,7 @@ import torch.nn as nn
 from sklearn.metrics import roc_auc_score, matthews_corrcoef, accuracy_score, recall_score, precision_score, f1_score
 import count
 from data import ProteinLigandData
-from model_yuan import CNN_TransformerModel
+from model_3328 import CNN_TransformerModel
 from losses import TripletCenterLoss, FocalLoss, CrossEntropy
 import numpy as np
 import pytorch_lightning as pl
@@ -17,17 +17,17 @@ pl.seed_everything(42)
 
 class TripletClassificationModel(pl.LightningModule):
     def __init__(self,
-                alpha,
-                margin,
-                clw,  # clw: contrastive learning weight
-                clf_lr,
-                loss_lr,
-                gamma,
-                loss,
-                samples_per_class,
-                batch_size,
-                backbone
-                ):
+                 alpha,
+                 margin,
+                 clw,  # clw: contrastive learning weight
+                 clf_lr,
+                 loss_lr,
+                 gamma,
+                 loss,
+                 samples_per_class,
+                 batch_size,
+                 backbone
+                 ):
         # print("clw is short for Contrastive Learning Weight")
         super(TripletClassificationModel, self).__init__()
         self.save_hyperparameters()
@@ -46,11 +46,11 @@ class TripletClassificationModel(pl.LightningModule):
         self.clf_lr = clf_lr
         self.loss_lr = loss_lr
         self.automatic_optimization = False  # pause auto optimizer
+        self.validation_metrics_history = []
 
         # model definitions
-        if  backbone == 'CNN_Transformer':
+        if backbone == 'CNN_Transformer':
             self.full_model = CNN_TransformerModel()
-
 
     def training_step(self, batch, batch_idx):
         model_opt, loss_opt = self.optimizers()
@@ -66,14 +66,13 @@ class TripletClassificationModel(pl.LightningModule):
         self.log('classification loss', clf_loss)
         self.log('triplet loss', triplet_loss)
 
-   
         loss = clf_loss + self.clw * triplet_loss
         self.log('loss', loss)
         self.manual_backward(loss)
 
         model_opt.step()
         if self.clw != 0:
-            #self.clip_gradients(loss_opt, gradient_clip_val=0.5)
+            # self.clip_gradients(loss_opt, gradient_clip_val=0.5)
             loss_opt.step()
         # model_scheduler.step()
         # loss_scheduler.step()
@@ -81,7 +80,8 @@ class TripletClassificationModel(pl.LightningModule):
         # self.log('model lr', model_scheduler.get_lr()[0])
         # self.log('loss lr', loss_scheduler.get_lr()[0])
 
-        return {'embedding': embedding.reshape(embedding.size(0) * embedding.size(1), -1), 'label': label.reshape(label.size(0) * label.size(1)), 'score': score, 'loss': loss}
+        return {'embedding': embedding.reshape(embedding.size(0) * embedding.size(1), -1),
+                'label': label.reshape(label.size(0) * label.size(1)), 'score': score, 'loss': loss}
 
     def training_epoch_end(self, outputs):
         # training embedding is saved as batch, which is not the same
@@ -95,8 +95,8 @@ class TripletClassificationModel(pl.LightningModule):
 
     def validation_step(self, batch, batch_idx):
         feature, label = batch
-        #embedding = self.encoder(feature)
-        #score = self.classifier(embedding)
+        # embedding = self.encoder(feature)
+        # score = self.classifier(embedding)
         score, embedding = self.full_model(feature)
         print(score.shape)
         return {'embedding': embedding.squeeze(0), 'label': label.squeeze(0), 'score': score.squeeze(0)}
@@ -134,13 +134,33 @@ class TripletClassificationModel(pl.LightningModule):
         self.log("F1", f1)
 
         # print the metrics after each validation epoch
-        print(f"Validation Metrics - AUC: {auc:.4f}, MCC: {mcc:.4f}, ACC: {acc:.4f}, SEN: {sen:.4f}, SPE: {spe:.4f}, PRE: {pre:.4f}, F1: {f1:.4f}")
+        print(
+            f"Validation Metrics - AUC: {auc:.4f}, MCC: {mcc:.4f}, ACC: {acc:.4f}, SEN: {sen:.4f}, SPE: {spe:.4f}, PRE: {pre:.4f}, F1: {f1:.4f}")
+
+        # Save current epoch metrics to history
+        self.validation_metrics_history.append({
+            'auc': auc, 'mcc': mcc, 'acc': acc, 'sen': sen,
+            'spe': spe, 'pre': pre, 'f1': f1
+        })
+
+        # Every 5 epochs, calculate and print average metrics
+        if (self.current_epoch + 1) % 5 == 0:
+            last_5 = self.validation_metrics_history[-5:]
+            avg_metrics = {
+                key: np.mean([m[key] for m in last_5]) for key in last_5[0]
+            }
+
+            print("\nAverage Metrics (Last 5 Epochs):")
+            print(
+                f"AUC: {avg_metrics['auc']:.4f}, MCC: {avg_metrics['mcc']:.4f}, ACC: {avg_metrics['acc']:.4f}, "
+                f"SEN: {avg_metrics['sen']:.4f}, SPE: {avg_metrics['spe']:.4f}, "
+                f"PRE: {avg_metrics['pre']:.4f}, F1: {avg_metrics['f1']:.4f}"
+            )
 
     def configure_optimizers(self):
         model_optimizer = torch.optim.Adam(self.full_model.parameters(), lr=self.clf_lr)
         loss_optimizer = torch.optim.Adam(self.triplet_criterion.parameters(), lr=self.loss_lr)
         return [model_optimizer, loss_optimizer]
-    
 
     def on_save_checkpoint(self, checkpoint):
         checkpoint['train_embedding'] = self.train_embedding
@@ -164,9 +184,9 @@ if __name__ == '__main__':
     batch_size = 8
 
     data_params = {'batch_size': batch_size,
-                   'train_data_root': '../IPDLPre/Dataset/DNA/three_data_Train.pkl',
-                   'val_data_root': '../IPDLPre/Dataset/DNA/three_data_Val.pkl'}
-    samples_per_class = count.count('../IPDLPre/Raw_data/DNA-573_Train.txt')
+                   'train_data_root': '../CLAPE-SMB/Dataset/concat/three_data_Train.pkl',
+                   'val_data_root': '../CLAPE-SMB/Dataset/concat/three_data_Val.pkl'}
+    samples_per_class = count.count('../CLAPE-SMB/Raw_data/DNA/DNA-573_Train.txt')
 
     data = ProteinLigandData(**data_params)
 
@@ -197,4 +217,3 @@ if __name__ == '__main__':
     model = TripletClassificationModel(**model_params)
 
     trainer.fit(model, datamodule=data)
-
