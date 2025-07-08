@@ -6,7 +6,8 @@ ESM-2: https://huggingface.co/facebook/esm2_t12_650M_UR50D
 ProtT5: https://huggingface.co/Rostlab/prot_t5_xl_uniref50  
 ProtBert: https://huggingface.co/Rostlab/prot_bert  
 
-# 1. Requirements
+# 1. System Requirements  
+The source code developed in Python 3.9 using PyTorch 2.5.1. The required python dependencies are given below.  
 Python 3.9+  
 PyTorch 2.5.1  
 Torchvision 0.20.1  
@@ -20,11 +21,11 @@ pandas 2.2.3
 matplotlib 3.9.4  
 pytorch-lightning 1.9.5  
 
-# 2. Datasets
+# 2. Feature Generation  
+step1：  
+step2：  
 
 # 3. How to use
-
-## 3.1 Set up environment for ProtTrans 
 
 ## 3.2 Train and test
 
