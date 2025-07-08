@@ -7,6 +7,18 @@ ProtT5: https://huggingface.co/Rostlab/prot_t5_xl_uniref50
 ProtBert: https://huggingface.co/Rostlab/prot_bert  
 
 # 1. Requirements
+- Python 3.9+  
+- PyTorch 2.5.1  
+- Torchvision 0.20.1  
+- Torchaudio 2.5.1  
+- CUDA 11.8 (recommended)  
+- Transformers 4.46.3  
+- SentencePiece 0.2.0  
+- fair-esm 2.0.0  
+- scikit-learn 1.5.2  
+- pandas 2.2.3  
+- matplotlib 3.9.4  
+- pytorch-lightning 1.9.5  
 
 # 2. Datasets
 
