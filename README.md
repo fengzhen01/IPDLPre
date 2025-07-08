@@ -35,10 +35,15 @@ You can either use the Hugging Face `transformers` library to automatically down
 
 ## step2 ：Generate Protein Language Model Embeddings  
 After downloading the pretrained models in **step1**, you can use the following Python scripts to generate embeddings for protein sequences:
-- `pre_esm2.py`  → generates embeddings using ESM-2  
-- `pre_protT5.py` → generates embeddings using ProtT5  
-- `pre_protbert.py` → generates embeddings using ProtBert  
-Each script processes protein sequences and saves the corresponding embeddings into the `./Dataset/` directory under subfolders such as `./Dataset/DNA/` or `./Dataset/RNA/`.
+`pre_esm2.py`  → generates embeddings using ESM-2  
+`pre_protT5.py` → generates embeddings using ProtT5  
+`pre_protbert.py` → generates embeddings using ProtBert  
+Each script processes protein sequences and saves the corresponding embeddings into the ./Dataset/ directory under subfolders such as ./Dataset/DNA/, ./Dataset/RNA/, or ./Dataset/DRNA/, depending on the type of data being processed.  
+After running these scripts, you will obtain .pkl files that contain the extracted embeddings. For example:  
+DNA-related embeddings will be saved in ./Dataset/DNA/  
+RNA-related embeddings will be saved in ./Dataset/RNA/  
+DRNA-related embeddings will be saved in ./Dataset/DRNA/  
+These .pkl files are used as input for downstream model training and evaluation.  
 
 **Example usage:**
 ```bash
