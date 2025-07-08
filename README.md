@@ -1,13 +1,10 @@
-# IPDLPre: Protein-DNA binding site prediction
-
-IPDLPre is primarily dependent on a large-scale pre-trained protein language model ESM-2,protT5 and protbert implemented using HuggingFace's Transformers and PyTorch.
-
-This repository contains the code for the PDNAPred framework, which is used for predicting protein-DNA binding sites. We also provide functionality for predicting protein-RNA binding sites.
-
-PDNAPred relies on two large-scale pre-trained protein language models: ESM-2 and ProtT5. These models are implemented using Hugging Face's Transformers library and PyTorch. Please make sure to install the required dependencies beforehand.
-
-ESM-2: https://huggingface.co/facebook/esm2_t12_35M_UR50D
+# Protein-DNA Binding Sites Prediction via Integrating Pretrained Large Language Models and Contrastive Learning
+IPDLPre is primarily dependent on a large-scale pre-trained protein language model ESM-2, protT5 and protbert implemented using HuggingFace's Transformers and PyTorch.
+This repository contains the code for the IPDLPre framework, which is used for predicting protein-DNA binding sites. We also provide functionality for predicting protein-RNA binding sites.
+IPDLPre relies on three large-scale pre-trained protein language models: ESM-2, protT5 and protbert These models are implemented using Hugging Face's Transformers library and PyTorch. Please make sure to install the required dependencies beforehand.
+ESM-2: https://huggingface.co/facebook/esm2_t12_650M_UR50D
 ProtT5: https://huggingface.co/Rostlab/prot_t5_xl_uniref50
+ProtBert: https://huggingface.co/Rostlab/prot_bert
 
 # 1. Requirements
 
