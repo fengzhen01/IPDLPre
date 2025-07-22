@@ -68,7 +68,10 @@ These files serve as the final input to the downstream predictive model.
 🔄 Alternatively, if you wish to skip local generation, you can download the concatenated feature files directly from our cloud drive:  
 📦 [Google Drive – Merged Features (three_data_*.pkl)](https://drive.google.com/drive/folders/1fEPL1xJZbGAo6qmFj-cxdiG3HtibIcVu)  
 
-📁 Be sure to place the files in the correct location, e.g., `./Dataset/DNA/three_data_Train.pkl`. 
+📁 Be sure to place the files in the correct locations:  
+- `./Dataset/DNA/three_data_Train.pkl`  
+- `./Dataset/RNA/three_data_Train.pkl`  
+- `./Dataset/DRNA/three_data_Train.pkl`
 
 # 3. Run IPDLPre for prediction
 To run prediction using the IPDLPre framework on datasets located in the ./Dataset directory, execute the following command:
