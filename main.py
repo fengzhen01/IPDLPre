@@ -45,6 +45,9 @@ class TripletClassificationModel(pl.LightningModule):
         self.loss_lr = loss_lr
         self.automatic_optimization = False  # pause auto optimizer
         self.validation_metrics_history = []
+        self.best_mcc = -1.0
+        self.best_metrics = {}
+        self.best_epoch = -1
 
         # model definitions
         if backbone == 'CNN_Transformer':
@@ -76,7 +79,6 @@ class TripletClassificationModel(pl.LightningModule):
                 'label': label.reshape(label.size(0) * label.size(1)), 'score': score, 'loss': loss}
 
     def training_epoch_end(self, outputs):
-        # training embedding is saved as batch, which is not the same
         embedding_list = [out['embedding'].detach().cpu().numpy() for out in outputs]
         label_list = [out['label'].cpu().numpy() for out in outputs]
         score_list = [out['score'].detach().cpu().numpy() for out in outputs]
@@ -87,8 +89,7 @@ class TripletClassificationModel(pl.LightningModule):
 
     def validation_step(self, batch, batch_idx):
         feature, label = batch
-        # embedding = self.encoder(feature)
-        # score = self.classifier(embedding)
+
         score, embedding = self.full_model(feature)
         print(score.shape)
         return {'embedding': embedding.squeeze(0), 'label': label.squeeze(0), 'score': score.squeeze(0)}
@@ -143,6 +144,14 @@ class TripletClassificationModel(pl.LightningModule):
                 f"SEN: {avg_metrics['sen']:.4f}, SPE: {avg_metrics['spe']:.4f}, "
                 f"PRE: {avg_metrics['pre']:.4f}, F1: {avg_metrics['f1']:.4f}"
             )
+            
+        if mcc > self.best_mcc:
+            self.best_mcc = mcc
+            self.best_epoch = self.current_epoch
+            self.best_metrics = {
+                'auc': auc, 'mcc': mcc, 'acc': acc, 'sen': sen,
+                'spe': spe, 'pre': pre, 'f1': f1
+            }
 
     def configure_optimizers(self):
         model_optimizer = torch.optim.Adam(self.full_model.parameters(), lr=self.clf_lr)
@@ -204,3 +213,10 @@ if __name__ == '__main__':
     model = TripletClassificationModel(**model_params)
 
     trainer.fit(model, datamodule=data)
+    
+    if model.best_metrics:
+        bm = model.best_metrics
+        print(f"\n=== Best Validation Metrics (Epoch {model.best_epoch}) ===")
+        print(f"AUC: {bm['auc']:.4f}, MCC: {bm['mcc']:.4f}, ACC: {bm['acc']:.4f}, "
+              f"SEN: {bm['sen']:.4f}, SPE: {bm['spe']:.4f}, "
+              f"PRE: {bm['pre']:.4f}, F1: {bm['f1']:.4f}")
