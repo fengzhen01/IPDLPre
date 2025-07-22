@@ -51,8 +51,8 @@ python pre_protT5.py
 python pre_protbert.py
 ```
 ⚠️ If you are unable to generate these embeddings locally due to hardware or runtime limitations, pre-extracted .pkl files can be downloaded from our cloud drive:  
-📦 Google Drive – Single Model Embeddings  
-(Includes ProtT5, ProtBert, and ESM-2 features for DNA/RNA/DRNA)  
+📦 Google Drive – Single Model Embeddings(https://drive.google.com/drive/folders/1geXCnAxI6rHFqYTMuw9t6ywJ2CWlwOdo)  
+(Includes ProtT5, ProtBert, and ESM-2 features for DNA)  
 Please place the downloaded files into the appropriate subfolders under ./Dataset/.  
 
 ## step3 ：Concatenate Multi-Model Embeddings  
