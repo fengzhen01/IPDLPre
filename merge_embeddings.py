@@ -36,9 +36,9 @@ protbert_data_root_Val = '../IPDLPre/Dataset/DNA/protbert_DNA-573_Train.pkl'
 protT5_data_root_Val = '../IPDLPre/Dataset/DNA/protT5_DNA-573_Train.pkl'
 
 
-three_data_root_Val = '../IPDLPre/Dataset/DNA/three_data_Train.pkl'
-# three_data_root_Val = '../IPDLPre/Dataset/DNA/three_data_Val.pkl'
-# two_data_root_Val = '../IPDLPre/Dataset/DNA/two_data_Val.pkl'
+three_data_root_Val = '../IPDLPre/Dataset/DNA/three_DNA_Train.pkl'
+# three_data_root_Val = '../IPDLPre/Dataset/DNA/three_RNA_Train.pkl'
+# two_data_root_Val = '../IPDLPre/Dataset/DNA/two_DNA_Train.pkl'
 
 merge_features(esm_data_root_Val, protbert_data_root_Val, protT5_data_root_Val, three_data_root_Val)
 
