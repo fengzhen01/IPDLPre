@@ -61,17 +61,16 @@ Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been genera
 python merge_embeddings.py
 ```
 The script will output concatenated .pkl files such as:  
-./Dataset/DNA/three_data_Train.pkl  
-./Dataset/RNA/three_data_Train.pkl  
-./Dataset/DRNA/three_data_Train.pkl  
+./Dataset/DNA/three_DNA_Train.pkl  
+./Dataset/RNA/three_RNA_Train.pkl  
+./Dataset/DRNA/three_DRNA_Train.pkl  
 These files serve as the final input to the downstream predictive model.  
 🔄 Alternatively, if you wish to skip local generation, you can download the concatenated feature files directly from our cloud drive:  
-📦 [Google Drive – Merged Features (three_data_*.pkl)](https://drive.google.com/drive/folders/1fEPL1xJZbGAo6qmFj-cxdiG3HtibIcVu)  
+📦 [Google Drive – DNA/RNA/DRNA_embedding (e.g., three_DNA_Train.pkl, three_RNA_Train.pkl, etc.)](https://drive.google.com/drive/folders/1fEPL1xJZbGAo6qmFj-cxdiG3HtibIcVu)  
 
 📁 Be sure to place the files in the correct locations:  
-- `./Dataset/DNA/three_data_Train.pkl`  
-- `./Dataset/RNA/three_data_Train.pkl`  
-- `./Dataset/DRNA/three_data_Train.pkl`
+./Dataset/DNA/three_DNA_Train.pkl 
+./Dataset/DNA/three_DNA_Test.pkl
 
 # 3. Run IPDLPre for prediction
 To run prediction using the IPDLPre framework on datasets located in the ./Dataset directory, execute the following command:
