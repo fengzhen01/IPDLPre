@@ -56,7 +56,7 @@ python pre_protbert.py
 Please place the downloaded files into the appropriate subfolders under ./Dataset/.  
 
 ## step3 ：Concatenate Multi-Model Embeddings  
-Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been generated (see step2), you can run the script below to concatenate them into a unified embedding representation for each protein sequence:  
+Once the individual embeddings from ESM-2, ProtT5, and ProtBert have been generated (see **step2**), you can run the script below to concatenate them into a unified embedding representation for each protein sequence:  
 ```bash
 python merge_embeddings.py
 ```
