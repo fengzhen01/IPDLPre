@@ -171,9 +171,9 @@ if __name__ == '__main__':
     batch_size = 8
 
     data_params = {'batch_size': batch_size,
-                   'train_data_root': '../CLAPE-SMB/Dataset/concat/three_data_Train.pkl',
-                   'val_data_root': '../CLAPE-SMB/Dataset/concat/three_data_Val.pkl'}
-    samples_per_class = count.count('../CLAPE-SMB/Raw_data/DNA/DNA-573_Train.txt')
+                   'train_data_root': '../IPDLPre/Dataset/concat/three_DNA_Train.pkl',
+                   'val_data_root': '../IPDLPre/Dataset/concat/three_DNA_Test.pkl'}
+    samples_per_class = count.count('../IPDLPre/Raw_data/DNA/DNA-573_Train.txt')
 
     data = ProteinLigandData(**data_params)
 
