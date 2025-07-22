@@ -57,7 +57,7 @@ class TripletCenterLoss(nn.Module):
 
         batch_size = inputs.size(0)
         targets_expand = targets.view(batch_size, 1).expand(batch_size, inputs.size(1))  # [batch, dim]
-        centers_batch = self.centers.gather(0, targets_expand)  # 取出相应index的embedding
+        centers_batch = self.centers.gather(0, targets_expand)  # get embedding
 
         # compute pairwise distances between input features and corresponding centers
         centers_batch_bz = torch.stack([centers_batch] * batch_size)  # [batch, batch, dim]
